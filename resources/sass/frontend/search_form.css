@@ -84,6 +84,9 @@
     font-size: 11px;
     color: rgba(223,52,56,1);
 }
+.advnc_srchpadding{
+  padding: 22px 0px;
+}
 @media screen and (max-width: 991px) {
   .adv_result_row{
     font-size: 11px;

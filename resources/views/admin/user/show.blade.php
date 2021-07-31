@@ -225,6 +225,12 @@
                         </div>
                       </div>
                       <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">User Plan amount</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" name="bid_plan_amount" value="{{$user->bid_plan_amount}}" >
+                        </div>
+                      </div>
+                      <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Block user</label>
                         <div class="col-sm-10">
                           <input type="checkbox" class="form-control" name="block" {{$user->block==1?'checked':''}} data-bootstrap-switch data-off-color="danger" data-on-color="success">

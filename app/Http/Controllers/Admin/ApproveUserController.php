@@ -41,17 +41,17 @@ class ApproveUserController extends Controller
     }
     public function update_pendinguser(Request $request,$id){
         $pendinguser=User::find($id);
-        $category=UserCategory::find($request->plan);
+        // $category=UserCategory::find($request->plan);
         $pendinguser->update([
-            'bid_plan'=> $category->id,
-            'bid_plan_amount'=> $category->bid_limit,
+            'bid_plan'=> $request->plan,
+            'bid_plan_amount'=> $request->bid_plan_amount,
             'user_verify'=>1
         ]);
         $notification = array(
             'message' => 'User Approved successfully!',
             'alert-type' => 'success'
         );
-        return redirect(route('user_category.show',$category->id))->with($notification);
+        return redirect(route('user_category.show',$request->plan))->with($notification);
 
     }
     public function block(Request $request,$id)
@@ -279,10 +279,10 @@ class ApproveUserController extends Controller
 
         if ($request->plan == null) {
             $bid_plan=NULL;
-            $bid_plan_amount=Null;
+            #$bid_plan_amount=Null;
         }else{
             $bid_plan =$request->plan;
-            $bid_plan_amount=user_plan($request->plan)->bid_limit;
+            #$bid_plan_amount=user_plan($request->plan)->bid_limit;
         }
         if ($request->block=='on') {
             $block=1;
@@ -297,7 +297,7 @@ class ApproveUserController extends Controller
             'aadhaar_verify'=>$aadhaar_verify,
             'passport_verify'=>$passport_verify,
             'bid_plan'=>$bid_plan,
-            'bid_plan_amount'=>$bid_plan_amount,
+            'bid_plan_amount'=>$request->bid_plan_amount,
             'block'=>$block,
             'user_verify'=>$user_verify
         ]);

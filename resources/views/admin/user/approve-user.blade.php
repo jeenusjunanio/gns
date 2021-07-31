@@ -41,7 +41,7 @@
                        
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputFile">Category Image</label>
+                        <label for="exampleInputFile">User Plan</label>
                         <div class="input-group">
                           <select name="plan" id="" class="form-control">
                           	@foreach($category as $cat)
@@ -50,6 +50,14 @@
                           </select>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label for="inputSkills" class="col-form-label">User Plan amount</label>    
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="bid_plan_amount" value="{{$pendinguser->bid_plan_amount}}" >
+                          
+                        </div>
+                      </div>
+                      
                       
                       <div class="form-group">
                         <button type="submit" class="btn btn-success">Update</button>

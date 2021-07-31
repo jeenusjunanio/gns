@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SellerController;
 // for the frontendControllers
 use App\Http\Controllers\frontend\UserAuctionController;
 use App\Http\Controllers\frontend\BidController;
+use App\Http\Controllers\frontend\SearchController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\UserController;
@@ -81,7 +82,7 @@ Route::get('upcoming-auction', function(){
 })->name('upcoming-auction');
 
 // for advance search page
-Route::get('search', [BidController::class,'advanced_search']);
+Route::get('advanced_search/search', [SearchController::class,'advanced_search'])->name('advanced_search/search');
 // for country state in dropdowns
 Route::Resource('/country',CountryController::class);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
