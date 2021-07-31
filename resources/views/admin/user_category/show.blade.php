@@ -57,6 +57,7 @@
                   <th>email</th>
                   <th>address</th>
                   <th>mobile</th>
+                  <th>Plan Amount</th>
                   <th>action</th>
                 </tr>
                 </thead>
@@ -71,6 +72,7 @@
                       <td>{{$user->email}}</td>
                       <td>{{$user->address_1}}<br>{{$user->address_2}}</td>
                       <td>{{$user->mobile_1}}<br>{{$user->mobile_2}}</td>
+                      <td>{{$user->bid_plan_amount}}</td>
                       <td>
                         <a href="{{route('manageuser.edit',$user->id)}}" class="bg-success p-2 rounded-circle"><i class="fa fa-pen"></i></a>
                         <a href="{{route('manageuser.show',$user->id)}}" id="show_cat_{{$user->id}}" class="p-2" onclick="showcat({{$user->id}})"><i class="fa fa-eye"></i></a>

@@ -66,6 +66,10 @@ use App\Models\User;
 		$blockeduser=User::where('user_verify',0)->where('block',1)->where('role',null)->get();
 		return count($blockeduser);
 	}
+	function bid_plan_request(){
+		$bid_plan_request=User::where('bid_limit_request',1)->get();
+		return count($bid_plan_request);
+	}
 	function allPending_User(){
 		$pendinguser=User::where('user_verify',0)->where('block',0)->where('role',null)->get();
 		return count($pendinguser);

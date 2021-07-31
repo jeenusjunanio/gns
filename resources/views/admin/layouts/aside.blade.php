@@ -30,13 +30,13 @@
               <p>Dashboard</p>                
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{(Request::is('admin/user_category*')) || (Request::is('admin/manageuser*')) || (Request::is('admin/pending-Users*')) || (Request::is('admin/blocked-Users*')) || (Request::is('admin/bid-request*')) ? 'menu-is-opening menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Manage Users
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-warning right">{{allPending_User() !=0?allPending_User():''}}</span>
+                <span class="badge badge-warning right">{{(allPending_User() !=0?allPending_User(): 0) +(bid_plan_request() !=0?bid_plan_request(): 0)}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -66,6 +66,13 @@
                 <span class="badge badge-info right">{{allBlocked_User()}}</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('bid-request')}}" class="nav-link {{(Request::is('admin/bid-request*')) ? 'active' : ''}}">
+                  <i class="fa fa-ban nav-icon"></i>
+                  <p>Bid Request</p>
+                <span class="badge badge-warning right">{{bid_plan_request()}}</span>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item {{(Request::is('admin/category*')) ? 'menu-is-opening menu-open' : ''}}">
@@ -91,7 +98,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{(Request::is('admin/admin-auction*')) ? 'menu-is-opening menu-open' : ''}}">
+          <li class="nav-item {{(Request::is('admin/admin-auction*')) || (Request::is('admin/admin-latest-auction')) ? 'menu-is-opening menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-gavel"></i>
               <p>

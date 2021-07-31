@@ -170,6 +170,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('manageuser', ManageUserController::class);
     Route::get('pending-Users', [ManageUserController::class,'pendingUsers'])->name('pending-Users');
     Route::get('blocked-Users', [ManageUserController::class,'blockedUsers'])->name('blocked-Users');
+    Route::get('bid-request', [ManageUserController::class,'bidrequest'])->name('bid-request');
+    Route::get('bid-request/add/{id}', [ManageUserController::class,'bidrequest_form'])->name('bid-request/add');
+    Route::get('update_user_plan_request/{id}', [ManageUserController::class,'bidrequest_form_submit'])->name('update_user_plan_request');
+    Route::get('bid-request-reject/{id}', [ManageUserController::class,'bidrequest_form_reject'])->name('bid-request-reject');
     // Route::resource('approve_user', ApproveUserController::class);
     Route::get('approve_user/{id}', [ApproveUserController::class,'show'])->name('approve_user');
     Route::get('update_pendinguser/{id}', [ApproveUserController::class,'update_pendinguser'])->name('update_pendinguser');

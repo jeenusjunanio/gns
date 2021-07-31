@@ -102,4 +102,44 @@ class ManageUserController extends Controller
                     ->where('role', null)->get();
         return view('admin.user.blocked-users',['users'=>$user]);
     }
+
+    public function bidrequest()
+    {
+        $user=User::where('bid_limit_request',1)->get();
+        return view('admin.user.bid_request',['users'=>$user]);
+    }
+    public function bidrequest_form($id)
+    {
+        $user=User::findOrFail($id);
+        return view('admin.user.update_bid_limit',['user'=>$user]);
+    }
+    public function bidrequest_form_submit(Request $request,$id)
+    {
+        $user=User::findOrFail($id);
+        $user->update([
+            'bid_plan' =>$request->plan,
+            'bid_plan_amount' =>$request->bid_plan_amount,
+            'bid_limit_request' =>0,
+            'bid_limit_request_amount'=>0
+        ]);
+        $notification = array(
+            'message' => 'User Plan Amount Upadted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect(route('manageuser.show',$id))->with($notification);
+    }
+    public function bidrequest_form_reject($id)
+    {
+        $user=User::findOrFail($id);
+        $user->update([
+            'bid_limit_request' =>0,
+            'bid_limit_request_amount'=>0
+        ]);
+        $notification = array(
+            'message' => 'User Plan Amount Rejected successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect(route('manageuser.show',$id))->with($notification);
+        
+    }
 }
