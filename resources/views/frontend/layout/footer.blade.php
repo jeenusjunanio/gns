@@ -17,7 +17,7 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Information</h4>
             <ul>
-              <li><i class=""></i> <a href="{{url('contact')}}" title="{{site_info() !=null?site_info()->title:config('app.name')}} know your coin">Know your coin</a></li>
+              <li><i class=""></i> <a href="{{route('know-your-coin.create')}}" title="{{site_info() !=null?site_info()->title:config('app.name')}} know your coin">Know your coin</a></li>
               <li><i class=""></i> <a href="{{url('contact')}}" title="{{site_info() !=null?site_info()->title:config('app.name')}} faq">FAQs</a></li>
               <li><i class=""></i> <a href="{{route('bank-info')}}" title="{{site_info() !=null?site_info()->title:config('app.name')}} bank information">Bank Information</a></li>
               {{-- <li><i class=""></i> <a href="#">Order catalogues</a></li> --}}

@@ -180,7 +180,7 @@ $syear = date('Y', $stimestamp);
 @endsection
 <script>
   window.addEventListener('load', () => {
-    filterSelection("all")
+    filterSelection("all");
   });
 
 function filterSelection(c) {
@@ -225,4 +225,28 @@ function w3RemoveClass(element, name) {
 //     this.className += " active";
 //   });
 // }
+
+ window.addEventListener('load', () => {
+    $(window).scroll(function(e){ 
+      var $el = $('.auc_filter'); 
+      var isPositionFixed = ($el.css('position') == 'fixed');
+      if ($(this).scrollTop() > 400 && !isPositionFixed){ 
+         $el.addClass('stickyfilter');
+        // $el.css({'position': 'fixed', 'top': '140px','z-index': '9999','background': '#fff'}); 
+      }
+      if ($(this).scrollTop() < 400 && isPositionFixed){
+        // $el.css({'position': 'static', 'top': '0px'});
+        $el.removeClass('stickyfilter');
+      } 
+       var window_top = $(window).scrollTop();
+        var footer_top = $("#footer").offset().top;
+        
+        var div_height = $(".auc_filter").height();
+
+        if (window_top + div_height > footer_top)
+            // $el.css({'position': 'static', 'top': '0px'}); 
+            $el.removeClass('stickyfilter');   
+        
+    });
+  });
 </script>

@@ -82,8 +82,8 @@
                     <div class="col-sm-3">
                       <select class="form-control inp {{$errors->has('country')? ' border-danger':''}}" name="country"  id="country" required>
                         <option value="">Select Country</option>
-                        <option value="">Select Country</option>
-                            @foreach(allCountry() as $country)
+
+                            @foreach(getregCountry(101) as $country)
                             <option value="{{$country->id}}" 
                               @if(old('country') == $country->id) 
                               {{'selected'}}
@@ -94,7 +94,7 @@
                       </select>
                     <small class="form-text text-danger">{!!$errors->first('country')!!}</small>
                     </div>
-                    <label for="state" class="col-sm-3 col-form-label">state</label>
+                    <label for="state" class="col-sm-3 col-form-label">State</label>
                     <div class="col-sm-3">
                        <select id="state" class="form-control inp {{$errors->has('state')? ' border-danger':''}}" name="state" required>
                         @if(old('country'))

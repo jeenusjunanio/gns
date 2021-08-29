@@ -101,7 +101,7 @@
 
           <li class="nav-item {{(Request::is('admin/material*')) ? 'menu-is-opening menu-open' : ''}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
+              <i class="nav-icon fas fa-medal"></i>
               <p>
                 Material
                 <i class="fas fa-angle-left right"></i>
@@ -307,6 +307,56 @@
                 <a href="{{route('site-info.index')}}" class="nav-link {{(Request::is('admin/invoices/pending')) ? 'active' : ''}}">
                   <i class="fas fa-wrench nav-icon"></i>
                   <p>Site Info</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{(Request::is('admin/user-coin-query*')||Request::is('admin/user-coin-query-contacted')) ? 'menu-is-opening menu-open' : ''}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                User Coin Query
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-warning right">{{(allPending_coin_query() !=0?allPending_coin_query(): '')}}</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('user-coin-query.index')}}" class="nav-link {{(Request::is('admin/user-coin-query')) ? 'active' : ''}}">
+                  <i class="fas fa-clock  nav-icon"></i>
+                  <p>Pending</p>
+                  <span class="badge badge-warning right">{{(allPending_coin_query() !=0?allPending_coin_query(): 0)}}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('user-coin-query-contacted')}}" class="nav-link {{(Request::is('admin/user-coin-query-contacted')) ? 'active' : ''}}">
+                  <i class="fas fa-phone nav-icon"></i>
+                  <p>Contacted</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{(Request::is('admin/user-contact-form*')||Request::is('admin/user-contact-form-contacted')) ? 'menu-is-opening menu-open' : ''}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                User Contact Form
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-warning right">{{(allPending_cotact_query() !=0?allPending_cotact_query(): '')}}</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('user-contact-form.index')}}" class="nav-link {{(Request::is('admin/user-contact-form')) ? 'active' : ''}}">
+                  <i class="fas fa-clock  nav-icon"></i>
+                  <p>Pending</p>
+                  <span class="badge badge-warning right">{{(allPending_cotact_query() !=0?allPending_cotact_query(): 0)}}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('user-contact-form-contacted')}}" class="nav-link {{(Request::is('admin/user-contact-form-contacted')) ? 'active' : ''}}">
+                  <i class="fas fa-phone nav-icon"></i>
+                  <p>Contacted</p>
                 </a>
               </li>
             </ul>

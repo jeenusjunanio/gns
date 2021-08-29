@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\frontend\UserAuctionController;
 use App\Http\Controllers\frontend\BidController;
 use App\Http\Controllers\frontend\SearchController;
+use App\Http\Controllers\frontend\KnowYourCoinController;
+use App\Http\Controllers\frontend\ContactUsController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\UserController;
@@ -41,6 +43,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     //return view('welcome');
     return view("frontend/index");
@@ -57,9 +60,9 @@ Route::get('/index', function(){
    return view("frontend/index");
 })->name('index');
 
-Route::get('/contact', function(){
-   return view("frontend.contact");
-})->name('contact');
+// Route::get('/contact', function(){
+//    return view("frontend.contact");
+// })->name('contact');
 Route::get('/about-us', function(){
    return view("frontend.about-us");
 })->name('about-us');
@@ -102,7 +105,11 @@ Route::get('advanced_search/search', [SearchController::class,'advanced_search']
 Route::Resource('/country',CountryController::class);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
-
+// for know your coin
+Route::Resource('know-your-coin', KnowYourCoinController::class);
+// for contact us form
+Route::get('contact-us', [ContactUsController::class,'create'])->name('contact-us');
+Route::post('store-contact-us', [ContactUsController::class,'store'])->name('store-contact-us');
 // for the bank route
 
 Route::get('/bank-info', [UserAuctionController::class, 'bankdetail'])->name('bank-info');
@@ -224,5 +231,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('terms',TermsAndConditionController::class);
     Route::resource('site-info',SiteInfoController::class);
     Route::resource('material',MaterialController::class);
+    Route::Resource('user-coin-query', KnowYourCoinController::class);
+    Route::get('user-coin-query-contacted',[KnowYourCoinController::class,'contacted'])->name('user-coin-query-contacted');
+    // contact form
+    Route::Resource('user-contact-form', ContactUsController::class);
+    Route::get('user-contact-form-contacted',[ContactUsController::class,'contacted'])->name('user-contact-form-contacted');
 
 });
